@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 0 0% 7%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+
+    --primary: 213 60% 11%;
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 215 38% 17%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 37 97% 52%;
+    --accent-foreground: 0 0% 7%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 20% 90%;
+    --input: 214 20% 90%;
+    --ring: 37 97% 52%;
+
+    --radius: 0.75rem;
+
+    /* Custom InsofAuto tokens */
+    --timer-bg: 37 97% 52%;
+    --timer-text: 0 0% 7%;
+    --hot-deal: 37 97% 52%;
+    --locked: 215 16% 70%;
+    --success: 142 71% 45%;
+    --nav-bg: 0 0% 100%;
+    --nav-border: 214 20% 92%;
+    --card-shadow: 0 4px 20px -4px hsl(215 38% 17% / 0.08);
+    --card-shadow-hover: 0 8px 30px -4px hsl(215 38% 17% / 0.12);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 213 60% 6%;
+    --foreground: 210 20% 98%;
+
+    --card: 215 38% 10%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 215 38% 10%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 210 20% 98%;
+    --primary-foreground: 213 60% 11%;
+
+    --secondary: 215 38% 20%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 215 38% 17%;
+    --muted-foreground: 215 16% 60%;
+
+    --accent: 37 97% 52%;
+    --accent-foreground: 0 0% 7%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 38% 20%;
+    --input: 215 38% 20%;
+    --ring: 37 97% 52%;
+
+    --nav-bg: 215 38% 10%;
+    --nav-border: 215 38% 17%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .blur-price {
+    filter: blur(8px);
+    user-select: none;
+  }
+
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2px);
+  }
+
+  .timer-pulse {
+    animation: timer-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes timer-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  .slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .safe-bottom {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

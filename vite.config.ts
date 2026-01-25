@@ -9,6 +9,12 @@ export default defineConfig(({ mode }) => ({
     host: "127.0.0.1",
     port: 8082,
     strictPort: true,
+    proxy: {
+      '/api': {
+        target: 'https://uadmin.ubazar.uz',
+        changeOrigin: true,
+      }
+    }
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {

@@ -9,6 +9,9 @@ export default defineConfig(({ mode }) => ({
     host: "127.0.0.1",
     port: 8082,
     strictPort: true,
+    headers: {
+      "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://uadmin.ubazar.uz ws://127.0.0.1:8082;",
+    },
     proxy: {
       '/api': {
         target: 'https://uadmin.ubazar.uz',

@@ -4,7 +4,6 @@ const API_URL = import.meta.env.VITE_API_URL || 'https://uadmin.ubazar.uz/api';
 
 // Create axios instance
 const api = axios.create({
-  // Ensure baseURL ends with / to avoid path replacement issues
   baseURL: API_URL.endsWith('/') ? API_URL : `${API_URL}/`,
   headers: {
     'Content-Type': 'application/json',
@@ -12,9 +11,15 @@ const api = axios.create({
   },
 });
 
-// Request interceptor to add token
+// Request interceptor to add token and fix URL joining
 api.interceptors.request.use(
   (config) => {
+    // If the URL starts with a slash, we remove it to ensure it appends to the baseURL's path
+    // e.g. baseURL: '.../api/' + url: 'cars' -> '.../api/cars'
+    if (config.url?.startsWith('/')) {
+      config.url = config.url.substring(1);
+    }
+
     const token = localStorage.getItem('auth_token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;

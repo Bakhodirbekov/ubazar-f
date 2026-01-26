@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-const API_BASE = 'http://localhost:8000/api';
+import api from '../lib/api';
 
 export interface Banner {
   id: number;
@@ -15,7 +13,7 @@ export interface Banner {
 export const bannerService = {
   async getBanners(): Promise<Banner[]> {
     try {
-      const response = await axios.get(`${API_BASE}/banners`);
+      const response = await api.get('/banners');
       return response.data;
     } catch (error) {
       console.error('Failed to fetch banners:', error);

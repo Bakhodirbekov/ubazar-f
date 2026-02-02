@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Mail, Lock, User, Phone, Eye, EyeOff, Car } from 'lucide-react';
+import { X, Mail, Lock, User, Phone, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { cn } from '@/lib/utils';
 
@@ -54,12 +54,12 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
           </button>
           
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-12 h-12 rounded-2xl bg-accent flex items-center justify-center">
-              <Car className="w-6 h-6 text-accent-foreground" />
+            <div className="w-12 h-12 rounded-2xl bg-accent flex items-center justify-center overflow-hidden p-1">
+              <img src="/images/UBAZAR_logo_50x50.png" alt="UBazar Logo" className="w-full h-full object-contain" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-foreground">InsofAuto</h2>
-              <p className="text-sm text-muted-foreground">Insof bilan sotiladi</p>
+              <h2 className="text-xl font-bold text-foreground">UBazar</h2>
+              <p className="text-sm text-muted-foreground">Avtomobillar bozori</p>
             </div>
           </div>
         </div>

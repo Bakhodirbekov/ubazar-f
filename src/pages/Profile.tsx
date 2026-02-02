@@ -2,7 +2,7 @@ import { Header } from '@/components/Header';
 import { BottomNav } from '@/components/BottomNav';
 import { AuthModal } from '@/components/AuthModal';
 import { useAuth } from '@/contexts/AuthContext';
-import { User, Heart, Settings, LogOut, ChevronRight } from 'lucide-react';
+import { Heart, Settings, LogOut, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Profile() {
@@ -16,14 +16,14 @@ export default function Profile() {
         
         <main className="safe-bottom px-4 py-4">
           <div className="flex flex-col items-center justify-center py-20 text-center">
-            <div className="w-20 h-20 rounded-full bg-secondary flex items-center justify-center mb-4">
-              <User className="w-8 h-8 text-secondary-foreground" />
+            <div className="w-20 h-20 rounded-2xl bg-accent flex items-center justify-center mb-4 overflow-hidden p-2">
+              <img src="/images/UBAZAR_logo_50x50.png" alt="UBazar Logo" className="w-full h-full object-contain" />
             </div>
             <h2 className="text-xl font-bold text-foreground mb-2">
-              Profilingiz
+              UBazar ga kirish
             </h2>
             <p className="text-sm text-muted-foreground mb-6 max-w-xs">
-              Kirish orqali mashinalarni to'liq ko'ring va e'lonlar joylashtiring
+              Barcha imkoniyatlardan foydalanish uchun profilingizga kiring
             </p>
             <button
               onClick={() => setShowAuthModal(true)}

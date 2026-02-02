@@ -9,7 +9,7 @@ export function Header() {
       <div className="flex items-center justify-between px-4 h-14">
         <div className="flex items-center gap-2">
           <div className="w-9 h-9 rounded-xl bg-accent flex items-center justify-center overflow-hidden">
-            <img src="/images/UBAZAR_logo_50x50.png" alt="UBazar Logo" className="w-full h-full object-cover" />
+            <img src="/images/UBAZAR_logo_50x50.png" alt="UBazar Logo" className="w-full h-full object-contain" />
           </div>
           <div>
             <h1 className="text-base font-bold text-foreground leading-tight">UBazar</h1>

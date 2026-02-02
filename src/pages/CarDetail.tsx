@@ -71,7 +71,7 @@ export default function CarDetail() {
   }
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('uz-UZ').format(price) + ' so\'m';
+    return '$' + new Intl.NumberFormat('en-US').format(price);
   };
 
   const handleFavorite = async () => {
@@ -343,7 +343,7 @@ export default function CarDetail() {
         {/* Description */}
         <div className="bg-card rounded-2xl p-4 shadow-card">
           <h2 className="font-semibold text-foreground mb-3">Tavsif</h2>
-          <p className="text-sm text-muted-foreground leading-relaxed">
+          <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-wrap">
             {car.description}
           </p>
         </div>

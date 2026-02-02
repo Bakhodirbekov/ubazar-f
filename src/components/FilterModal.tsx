@@ -1,6 +1,6 @@
 import { X, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
-import { categories, fuelTypes, transmissions, regions } from '@/data/mockCars';
+import { categories, fuelTypes, transmissions } from '@/data/mockCars';
 import { cn } from '@/lib/utils';
 
 interface FilterModalProps {
@@ -13,7 +13,6 @@ interface Filters {
   category: string;
   fuelType: string;
   transmission: string;
-  region: string;
   minPrice: string;
   maxPrice: string;
   minYear: string;
@@ -24,7 +23,6 @@ const defaultFilters: Filters = {
   category: '',
   fuelType: '',
   transmission: '',
-  region: '',
   minPrice: '',
   maxPrice: '',
   minYear: '',
@@ -125,30 +123,10 @@ export function FilterModal({ isOpen, onClose, onApply }: FilterModalProps) {
             </div>
           </div>
 
-          {/* Region */}
-          <div>
-            <label className="text-sm font-medium text-foreground mb-2 block">
-              Hudud
-            </label>
-            <div className="relative">
-              <select
-                value={filters.region}
-                onChange={(e) => setFilters(f => ({ ...f, region: e.target.value }))}
-                className="w-full h-11 px-4 rounded-xl bg-muted text-foreground text-sm appearance-none focus:outline-none focus:ring-2 focus:ring-accent"
-              >
-                <option value="">Barcha hududlar</option>
-                {regions.map((region) => (
-                  <option key={region} value={region}>{region}</option>
-                ))}
-              </select>
-              <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
-            </div>
-          </div>
-
           {/* Price Range */}
           <div>
             <label className="text-sm font-medium text-foreground mb-2 block">
-              Narx oralig'i (so'm)
+              Narx oralig'i ($)
             </label>
             <div className="grid grid-cols-2 gap-3">
               <input

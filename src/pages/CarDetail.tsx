@@ -131,7 +131,23 @@ export default function CarDetail() {
     }
     // Use contact_phone if available, otherwise fallback to user phone
     const phoneNumber = car?.contact_phone || car?.user?.phone || '+998901234567';
-    window.location.href = `tel:${phoneNumber}`;
+    
+    // WebView va mobile browsers uchun telefon qilish
+    const link = document.createElement('a');
+    link.href = `tel:${phoneNumber}`;
+    link.click();
+  };
+
+  const handleChat = () => {
+    if (!isAuthenticated) {
+      setShowAuthModal(true);
+      return;
+    }
+    if (!isExpired && !car?.price_visible) {
+      return;
+    }
+    // Instagram ga yo'naltirish
+    window.open('https://www.instagram.com/ubazar.uz/', '_blank');
   };
 
   const allImageUrls = car.images?.map(img => img.image_url) || [];
@@ -356,17 +372,24 @@ export default function CarDetail() {
             onClick={handleContact}
             disabled={!canViewPrice && !car.price_visible}
             className={cn(
-              'flex-1 h-12 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all',
+              'flex-1 h-14 rounded-xl font-semibold flex flex-col items-center justify-center gap-0.5 transition-all',
               canViewPrice || car.price_visible
                 ? 'bg-accent text-accent-foreground hover:bg-accent/90'
                 : 'bg-muted text-muted-foreground cursor-not-allowed'
             )}
           >
-            <Phone className="w-4 h-4" />
-            {canViewPrice || car.price_visible ? 'Qo\'ng\'iroq qilish' : 'Taymer tugashini kuting'}
+            <div className="flex items-center gap-2">
+              <Phone className="w-4 h-4" />
+              <span>{canViewPrice || car.price_visible ? 'Qo\'ng\'iroq qilish' : 'Taymer tugashini kuting'}</span>
+            </div>
+            {(canViewPrice || car.price_visible) && (
+              <span className="text-xs font-medium opacity-90">
+                {car?.contact_phone || car?.user?.phone || '+998 90 123 45 67'}
+              </span>
+            )}
           </button>
           <button
-            onClick={handleContact}
+            onClick={handleChat}
             disabled={!canViewPrice && !car.price_visible}
             className={cn(
               'w-12 h-12 rounded-xl flex items-center justify-center transition-all',
